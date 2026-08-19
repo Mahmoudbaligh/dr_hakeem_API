@@ -11,7 +11,14 @@ from PIL import Image, ImageEnhance, ImageOps
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-MODEL_PATH = BASE_DIR / "model" / "model.onnx"
+import os
+
+MODEL_PATH = Path(
+    os.getenv(
+        "MODEL_PATH",
+        str(BASE_DIR / "model" / "model.onnx")
+    )
+)
 CLASS_NAMES_PATH = BASE_DIR / "class_names.json"
 
 IMG_SIZE = 300
